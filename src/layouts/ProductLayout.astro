@@ -1,0 +1,30 @@
+---
+import '../styles/product.css';
+import { url } from '../lib/paths';
+interface Props { title: string; description: string }
+const { title, description } = Astro.props;
+const links = [['소개', 'overview/'], ['Features', 'features/'], ['Architecture', 'architecture/'], ['Use Cases', 'use-cases/'], ['News', 'news/']];
+---
+<!doctype html>
+<html lang="ko" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f3f5fa" />
+    <link rel="icon" type="image/png" href={url('bi_PMR.png')} />
+    <title>{title} | PMR</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">본문으로 이동</a>
+    <header class="site-header wrap">
+      <a class="brand" href={url()} aria-label="PMR 홈"><img class="brand-logo" src={url('PMR.png')} width="1824" height="464" alt="PMR" /><span class="brand-label">MESSAGE ROUTER</span></a>
+      <nav aria-label="주 메뉴">
+        {links.map(([label, path]) => <a href={url(path)} aria-current={Astro.url.pathname === url(path) ? 'page' : undefined}>{label}</a>)}
+        <a class="nav-docs" href={url('docs/')}>Docs ↗</a>
+      </nav>
+    </header>
+    <main id="main" class="wrap"><slot /></main>
+    <footer class="wrap site-footer"><a class="brand" href={url()} aria-label="PMR 홈"><img class="brand-logo" src={url('PMR.png')} width="1824" height="464" alt="PMR" loading="lazy" /></a><p>Programmable Message Router</p><a href={url('docs/')}>기술 문서 ↗</a></footer>
+  </body>
+</html>

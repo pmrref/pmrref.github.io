@@ -1,0 +1,22 @@
+/* Shared primitives; each layout owns its semantic colors. */
+:root {
+  --pmr-font-sans: Inter, "Noto Sans KR", system-ui, sans-serif;
+  --pmr-font-mono: "SFMono-Regular", Consolas, monospace;
+  --pmr-accent: #3858bd;
+  --pmr-accent-hover: #2d4498;
+  --pmr-soft: #e9edf8;
+  --pmr-shadow: 0 12px 35px rgb(35 53 103 / 5%);
+  --pmr-ink: #ffffff;
+  --pmr-bg: #f3f5fa;
+  --pmr-surface: #fafbfe;
+  --pmr-text: #202c49;
+  --pmr-muted: #57647d;
+  --pmr-line: #dce2ee;
+  --pmr-radius: 18px;
+  --pmr-space-1: .5rem;
+  --pmr-space-2: 1rem;
+  --pmr-space-3: 1.5rem;
+  --pmr-space-4: 2rem;
+  --pmr-space-5: 4rem;
+  --pmr-width: 1120px;
+}

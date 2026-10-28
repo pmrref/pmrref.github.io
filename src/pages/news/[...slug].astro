@@ -1,0 +1,14 @@
+---
+import { getCollection, render } from 'astro:content';
+import ProductLayout from '../../layouts/ProductLayout.astro';
+import { url } from '../../lib/paths';
+export async function getStaticPaths() {
+  return (await getCollection('news')).map(entry => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<ProductLayout title={entry.data.title} description={entry.data.description}>
+  <div class="page-heading"><a href={url('news/')}>← News</a><p class="eyebrow"><time datetime={entry.data.date.toISOString()}>{entry.data.date.toISOString().slice(0,10)}</time></p><h1>{entry.data.title}</h1><p class="lead">{entry.data.description}</p></div>
+  <article class="prose"><Content /></article>
+</ProductLayout>

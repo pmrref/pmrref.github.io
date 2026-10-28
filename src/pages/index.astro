@@ -1,0 +1,22 @@
+---
+import { getCollection, render } from 'astro:content';
+import ProductLayout from '../layouts/ProductLayout.astro';
+import { url } from '../lib/paths';
+const pages = (await getCollection('product')).sort((a,b) => a.data.order - b.data.order);
+const cases = pages.find(page => page.id === 'use-cases')!;
+const { Content: UseCases } = await render(cases);
+---
+<ProductLayout title="Programmable Message Router" description="PMR — 메시지 흐름을 프로그래밍하다. 제품 소개와 기술 문서를 한곳에서 만나보세요.">
+  <div class="hero">
+    <div class="hero-copy">
+    <p class="eyebrow">Programmable Message Router / PMR</p>
+    <h1>메시지의 흐름을,<br /><span>프로그래밍하다.</span></h1>
+    <p class="lead">PMR의 제품 개념부터 아키텍처, 프로그래밍과 운영까지.<br />메시지 라우팅을 이해하고 설계하기 위한 출발점입니다.</p>
+    <div class="actions"><a class="button primary" href={url('docs/getting-started/')}>문서에서 시작하기 ↗</a><a class="button" href={url('overview/')}>PMR 알아보기 →</a></div>
+    </div>
+    <figure class="hero-art"><img class="hero-logo" src={url('bi_PMR.png')} width="1000" height="1000" alt="PMR — 메시지 연결을 표현한 나비 로고" fetchpriority="high" /></figure>
+  </div>
+  <section aria-labelledby="metrics"><p class="eyebrow" id="metrics">At a glance / 콘텐츠 구성</p><div class="metrics"><div><strong>01</strong><p>제품과 기술 문서를 한곳에</p></div><div><strong>05</strong><p>제품을 탐색하는 다섯 가지 관점</p></div><div><strong>07</strong><p>시작부터 운영까지 문서 영역</p></div></div><p class="muted">사이트 구성 지표입니다. 제품 성능 벤치마크는 검증 후 공개할 예정입니다.</p></section>
+  <section aria-labelledby="use-cases"><div class="section-heading"><div><p class="eyebrow">Use cases</p><h2 id="use-cases">메시지 흐름에서 시작하는 설계</h2></div><a href={url('use-cases/')}>활용 시나리오 →</a></div><div class="prose"><UseCases /></div></section>
+  <section aria-labelledby="explore"><div class="section-heading"><div><p class="eyebrow">Explore</p><h2 id="explore">PMR 더 살펴보기</h2></div><a href={url('docs/')}>기술 문서 ↗</a></div><div class="grid">{pages.map(page => <a class="card" href={url(`${page.id}/`)}><small>0{page.data.order} / EXPLORE</small><h3>{page.data.title} ↗</h3><p>{page.data.description}</p></a>)}<a class="card" href={url('news/')}><small>05 / JOURNAL</small><h3>News ↗</h3><p>프로젝트와 문서의 업데이트를 확인하세요.</p></a></div></section>
+</ProductLayout>

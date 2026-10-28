@@ -1,0 +1,10 @@
+---
+import { getCollection } from 'astro:content';
+import ProductLayout from '../../layouts/ProductLayout.astro';
+import { url } from '../../lib/paths';
+const entries = (await getCollection('news')).sort((a,b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<ProductLayout title="News" description="PMR 웹사이트와 문서의 업데이트 소식">
+  <div class="page-heading"><p class="eyebrow">Project journal</p><h1>News</h1><p class="lead">PMR 웹사이트와 문서의 변화.</p></div>
+  <div class="news-list">{entries.map(entry => <a class="card" href={url(`news/${entry.id}/`)}><small><time datetime={entry.data.date.toISOString()}>{entry.data.date.toISOString().slice(0,10)}</time></small><h2>{entry.data.title}</h2><p>{entry.data.description}</p></a>)}</div>
+</ProductLayout>

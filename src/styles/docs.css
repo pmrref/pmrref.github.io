@@ -1,0 +1,24 @@
+@import './tokens.css';
+/* Light palette also applies without JavaScript. Starlight layouts stay independent. */
+:root, :root[data-theme='light'], :root[data-theme='dark'] {
+  color-scheme: light;
+  --sl-font: var(--pmr-font-sans);
+  --sl-font-mono: var(--pmr-font-mono);
+  --sl-color-white: var(--pmr-text);
+  --sl-color-gray-1: #29364f;
+  --sl-color-gray-2: #40506b;
+  --sl-color-gray-3: var(--pmr-muted);
+  --sl-color-gray-4: #7b88a1;
+  --sl-color-gray-5: #cbd4e5;
+  --sl-color-gray-6: var(--pmr-soft);
+  --sl-color-gray-7: var(--pmr-bg);
+  --sl-color-black: var(--pmr-surface);
+  --sl-color-accent-low: #e3e9fc;
+  --sl-color-accent: var(--pmr-accent);
+  --sl-color-accent-high: #293f91;
+  --sl-color-bg: var(--pmr-bg);
+  --sl-color-bg-nav: var(--pmr-surface);
+  --sl-color-bg-sidebar: var(--pmr-bg);
+  --sl-color-hairline: var(--pmr-line);
+  --sl-color-hairline-light: var(--pmr-line);
+}
