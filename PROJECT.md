@@ -44,7 +44,7 @@ Astro 기반 Markdown-first 정적 웹사이트다. 표준 기능을 우선하�
 
 ## 개발과 배포 경계
 
-사용자가 조직 `pmrref`와 Public 저장소 `pmrref/pmrref.github.io`를 생성했다. 2026-10-28 GitHub API로 공개 상태, 기본 브랜치 `main`, 빈 저장소 상태를 확인했다. 기존 로컬 Git 저장소는 유지한다.
+사용자가 조직 `pmrref`와 Public 저장소 `pmrref/pmrref.github.io`를 생성했다. 2026-10-28 GitHub API로 공개 상태, 기본 브랜치 `main`, 당시 빈 저장소 상태를 확인했다. 이후 최초 push 및 Actions 배포가 성공했다. 기존 로컬 Git 저장소는 유지한다.
 
 게시 대상은 `https://pmrref.github.io/`다. `site`와 루트 `base: /`를 설정하고 `.github/workflows/deploy.yml`을 준비했다. `main` push·병합 시 자동 배포, PR은 검사·빌드만 수행한다. Pages 설정·Git 연결 절차는 `README.md`, 실제 연결·push·배포 성공 여부는 `PROGRESS.md`를 확인한다.
 

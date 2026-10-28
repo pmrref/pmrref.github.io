@@ -4,7 +4,7 @@
 
 ## 현재 상태
 
-초기 Astro·Starlight 기반 구조가 존재하며 제품 콘텐츠 작성 전의 샘플 단계다. 제품과 문서는 LIGHT 테마이며 PMR 로고와 은은한 블루 그레이 배경을 적용했다. GitHub 배포 준비 단계다. 조직 `pmrref`의 Public 저장소 `pmrref/pmrref.github.io`와 게시 대상 `https://pmrref.github.io/`가 확정됐다. 로컬 워크플로 작성·검증은 완료했으나 최초 push와 실제 원격 배포는 아직 수행하지 않았다.
+초기 Astro·Starlight 기반 구조가 존재하며 제품 콘텐츠 작성 전의 샘플 단계다. 제품과 문서는 LIGHT 테마이며 PMR 로고와 은은한 블루 그레이 배경을 적용했다. GitHub Pages 최초 배포를 완료했다. 조직 `pmrref`의 Public 저장소 `pmrref/pmrref.github.io`와 게시 대상 `https://pmrref.github.io/`가 확정됐다. 최초 커밋 `e71c2fa`를 `main`으로 push했고 `origin/main` 추적을 설정했다. 해당 커밋의 GitHub Actions가 성공했고 공개 홈·문서·로고·검색 스크립트의 HTTP 응답을 확인했다.
 
 초기 기억 체계 작성 시점에 파일과 Git 상태로 확인한 사항(후속 변경은 아래 날짜별 기록 참조):
 
@@ -45,7 +45,7 @@
 - 실제 제품 성능 수치와 고객 사례 검증. 현재 Metrics는 사이트 구성 수치다.
 - KytyPS5 디자인의 세부 계승과 실제 브라우저 기반 모바일·키보드 접근성 검수.
 - 검색 인덱스 생성은 확인됐으나 실제 브라우저 검색 동작은 미검증.
-- Pages Source 설정, 최초 커밋·원격 연결·push, 원격 Actions 실행과 실제 게시 URL 검증. 저장소·URL·Astro 설정·워크플로 준비는 아래 배포 기록에서 확인한다.
+- 공개 사이트에서 실제 검색 상호작용과 전체 키보드 접근성 검증. 최초 원격 빌드·배포 및 공개 홈·문서·로고·검색 스크립트의 HTTP 응답은 확인했다.
 - 향후 배포 하위 경로를 도입한다면 Markdown 절대 링크와 정적 자산 경로 재점검. 현재 루트 배포는 내부 링크·자산 검사를 통과했다.
 - Starlight 404 경고의 후속 처리. sitemap 경고는 도메인 설정 후 해소했다.
 
@@ -92,3 +92,19 @@
 - push 전 원격 refs가 여전히 비어 있고 로컬은 커밋 전 `master`, 원격 미설정 상태인 것을 확인했다.
 - 프로젝트 소스·설정·문서·로고만 명시적으로 스테이징한다. `node_modules`, `dist`, `.astro`와 로컬 환경 파일은 제외한다.
 - 이 기록 작성 시점에는 commit·push와 원격 Actions 결과가 아직 확정되지 않았다. 완료 결과는 후속 기록에서 확인한다.
+
+## 2026-10-28 · 최초 push 완료
+
+- 최초 커밋: `e71c2fa94adc85781bc07c95ddc970a3979212d7` (`Set up PMR website and GitHub Pages deployment`). 프로젝트 파일 45개를 포함했다.
+- HTTPS push는 인증 미설정으로 실패했다. 기존 SSH 인증이 GitHub에서 성공하는 것을 확인한 뒤 origin을 `git@github.com:pmrref/pmrref.github.io.git`로 설정했다.
+- `git push -u origin main` 성공. 로컬 `main`은 `origin/main`을 추적한다. 강제 push는 사용하지 않았다.
+- GitHub API에서 해당 커밋의 Actions 실행 `40617866566`이 `in_progress`인 것을 확인했다: https://github.com/pmrref/pmrref.github.io/actions/runs/40617866566
+- `README.md`의 최초 연결 안내를 완료 상태와 현재 SSH 원격에 맞췄다. 배포 결과는 확인 후 후속 기록한다.
+
+## 2026-10-28 · 첫 원격 배포 성공
+
+- 최초 커밋 `e71c2fa`의 Actions 실행 `40617866566`이 `completed / success`로 완료된 것을 GitHub API로 확인했다.
+- 원격 build의 Node 설정, `npm ci`, 타입 검사, 정적 빌드와 artifact 업로드가 성공했고 배포까지 완료했다.
+- `https://pmrref.github.io/`와 `/docs/`를 HTTP로 읽어 제품 Hero와 문서 제목을 확인했다. `/bi_PMR.png`는 로컬 원본과 SHA-256이 일치했고 `/pagefind/pagefind.js`도 정상 응답했다.
+- 공개 사이트에서 실제 검색 입력·키보드 조작은 이번 HTTP 검사에 포함하지 않았다.
+- `README.md`와 이 진행 기록의 배포 상태를 동기화한다. 이후 Markdown을 `main`에 커밋·push하면 같은 자동 배포가 실행된다.

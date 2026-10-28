@@ -59,13 +59,13 @@ Astro 7.4와 Starlight 0.42은 설치된 Node와 호환되는 조합으로 고�
 ### 최초 연결
 
 1. 저장소 **Settings → Pages → Build and deployment → Source**에서 **GitHub Actions**를 선택한다.
-2. 현재 로컬 저장소는 초기 커밋 전이다. 아래 명령은 원격이 없는 현재 상태에서 최초 한 번 실행한다. 원격·브랜치·커밋이 이미 있으면 `git status`와 `git remote -v`를 먼저 확인하고 기존 설정을 보존한다.
+2. 최초 연결은 완료했다. 아래 명령은 새 로컬 저장소에서 최초 연결할 때의 참고용이다. 현재 저장소에서는 재실행하지 말고 `git status`와 `git remote -v`로 기존 설정을 확인한다. 현재 origin은 기존 SSH 인증을 사용하는 `git@github.com:pmrref/pmrref.github.io.git`이다.
 
 ```sh
 git add .gitignore .npmrc .nvmrc .github AGENTS.md PROJECT.md DECISIONS.md PROGRESS.md CONTENT_GUIDE.md README.md astro.config.mjs package.json package-lock.json tsconfig.json public src
 git commit -m "Set up PMR website and GitHub Pages deployment"
 git branch -M main
-git remote add origin https://github.com/pmrref/pmrref.github.io.git
+git remote add origin git@github.com:pmrref/pmrref.github.io.git
 git push -u origin main
 ```
 
